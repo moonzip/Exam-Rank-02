@@ -10,7 +10,6 @@ int	main(int argc, char **argv)
 		while (argv[1][i] != '\0')
 			i++;
 		i--;
-
 		while (i >= 0)
 		{
 			write(1, &argv[1][i], 1);

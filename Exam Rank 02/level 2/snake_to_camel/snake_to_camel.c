@@ -1,4 +1,3 @@
-#include <stdlib.h>
 #include <unistd.h>
 
 int	main(int argc, char **argv)
@@ -10,14 +9,14 @@ int	main(int argc, char **argv)
 	{
 		while (argv[1][i] != '\0')
 		{
-			if(argv[1][i] == '_' && argv[1][i + 1] >= 'a' && argv[1][i + 1] <= 'z')
-			{
+			if (argv[1][i] == '_')
+			{	
 				i++;
 				argv[1][i] -= 32;
-				write (1, &argv[1][i], 1);
+				write (1, &argv[1][i], 1);	
 			}
 			else
-				write(1, &argv[1][i], 1);
+				write (1, &argv[1][i], 1);
 			i++;
 		}
 	}

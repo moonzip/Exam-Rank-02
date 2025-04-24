@@ -14,20 +14,15 @@ int	main(int argc, char **argv)
 		{
 			if (num % i == 0)
 			{
-				printf ("%d", i);
+				printf("%d", i);
 				num = num / i;
 				if (num >= i)
-					printf ("*");
-				else
-				{
-					printf ("\n");
-					return (0);
-				}
+					printf("*");
 			}
 			else
 				i++;
-
 		}
 	}
-	printf ("\n");
+	printf("\n");
+	return (0);
 }

@@ -1,54 +1,49 @@
 #include <unistd.h>
 
-void	ft_putnbr(int nbr)
-{
-	char	c;
-
-	if (nbr < 0)
-	{
-		write(1, "-", 1);
-		nbr *= -1;
-	}
-	else if (nbr >= 0 && nbr <= 9)
-	{
-		c = nbr + 48;
-		write(1, &c, 1);
-	}
-	else if (nbr > 9)
-	{
-		ft_putnbr(nbr / 10);
-		ft_putnbr(nbr % 10);
-	}
-}
-
-int	ft_atoi(const char *str)
+int	ft_atoi(char *s)
 {
 	int	i;
 	int	sign;
-	int	nbr;
-
+	int	res;
+	
 	i = 0;
 	sign = 1;
-	nbr = 0;
-	while ((str[i] >= 9 && str[i] <= 13) || (str[i] == ' '))
+	res = 0;
+	while (s[i] == 32 || s[i] == 10 || s[i] == 13)
 		i++;
-	if ((str[i] == '+') || (str[i] == '-'))
+	if (s[i] == '+' || s[i] == '-')
 	{
-		if (str[i] == '-')
-			sign = -1;
+		if (s[i] == '-')
+			sign *= -1;
 		i++;
 	}
-	while (str[i] >= '0' && str[i] <= '9')
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		nbr = nbr * 10 + str[i] - 48;
+		res = (res * 10) + (s[i] - 48);
 		i++;
 	}
-	return (sign * nbr);
+	return (res * sign);
+}
+
+void	ft_putchar(int c)
+{
+	write (1, &c, 1);
+}
+
+void	ft_putnbr(int n)
+{
+	if (n >= 10)
+	{
+		ft_putnbr(n / 10);
+		ft_putnbr(n % 10);
+	}
+	else
+		ft_putchar(n + 48);
 }
 
 int	prime(int n)
 {
-	int i;
+	int	i;
 
 	i = n - 1;
 	if (n == 2)
@@ -57,7 +52,7 @@ int	prime(int n)
 	{
 		if (n % i == 0)
 			return (0);
-		i--;	
+		i--;
 	}
 	return (1);
 }
@@ -73,7 +68,7 @@ int	main(int argc, char **argv)
 	{
 		n = ft_atoi(argv[1]);
 		if (n < 0)
-			write(1, "0", 1);
+			write (1, "0", 1);
 		else
 		{
 			while (n >= 2)
@@ -86,11 +81,6 @@ int	main(int argc, char **argv)
 		}
 	}
 	else
-		write(1, "0", 1);
-	write(1, "\n", 1);
+		write (1, "0", 1);
+	write (1, "\n", 1);
 }
-
-
-
-
-

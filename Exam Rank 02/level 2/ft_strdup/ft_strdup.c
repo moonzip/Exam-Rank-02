@@ -12,7 +12,6 @@ char	*ft_strdup(char *src)
 		a[i] = src[i];
 		i++;
 	}
-	a[i] = '\0';
 	return (a);
 }
 

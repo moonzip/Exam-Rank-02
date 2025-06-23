@@ -7,35 +7,39 @@ int	ft_atoi(char *s)
 
 	i = 0;
 	res = 0;
-	if(s[i] == ' ' || s[i] == 9 || s[i] == 13)
+	while (s[i] == 10 || s[i] == 12 || s[i] == 13 || s[i] == 32)
 		i++;
-	while (s[i] != '\0')
+	while (s[i] >= '0' && s[i] <= '9')
 	{
-		res = (s[i] - '0') + (res * 10);
+		res = res * 10 + s[i] - 48;
 		i++;
 	}
 	return (res);
 }
 
-void	print_hex(unsigned long long nb)
+void	ft_putchar(int c)
 {
-	char	*hex;
-	
-	hex = "0123456789abcdef";
+	write (1, &c, 1);
+}
+
+void	ft_putnbr(int nb)
+{
 	if (nb >= 16)
-		print_hex(nb / 16);
-	write(1, &hex[nb % 16], 1);
+	{
+		ft_putnbr(nb / 16);
+		ft_putnbr(nb % 16);
+	}
+	else
+		write(1, &"0123456789abcdef"[nb % 16], 1);
 }
 
 int	main(int argc, char **argv)
-{	
+{
 	int	i;
-
-	i = 0;
 	if (argc == 2)
 	{
-		print_hex(ft_atoi(argv[1]));		
+		i = ft_atoi(argv[1]);
+		ft_putnbr(i);
 	}
 	write (1, "\n", 1);
-	return (0);
 }

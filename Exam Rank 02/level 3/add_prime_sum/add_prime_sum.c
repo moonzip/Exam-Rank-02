@@ -60,10 +60,9 @@ int	prime(int n)
 int	main(int argc, char **argv)
 {
 	int	n;
-	int	x;
+	int	sum;
 
-	n = 0;
-	x = 0;
+	sum = 0;
 	if (argc == 2)
 	{
 		n = ft_atoi(argv[1]);
@@ -74,10 +73,10 @@ int	main(int argc, char **argv)
 			while (n >= 2)
 			{
 				if (prime(n) == 1)
-					x += n;
+					sum += n;
 				n--;
 			}
-			ft_putnbr(x);
+			ft_putnbr(sum);
 		}
 	}
 	else

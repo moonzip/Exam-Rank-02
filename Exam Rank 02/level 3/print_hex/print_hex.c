@@ -17,11 +17,6 @@ int	ft_atoi(char *s)
 	return (res);
 }
 
-void	ft_putchar(int c)
-{
-	write (1, &c, 1);
-}
-
 void	ft_putnbr(int nb)
 {
 	if (nb >= 16)

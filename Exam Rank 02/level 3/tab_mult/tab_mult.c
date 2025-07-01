@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	{
 		i = 1;
 		num = ft_atoi(argv[1]);
-		while (i <= 9 && num <= 238609183)
+		while (i <= 9 && num <= 2147483647)
 		{
 			ft_putnbr(i);
 			write (1, " x ", 3);

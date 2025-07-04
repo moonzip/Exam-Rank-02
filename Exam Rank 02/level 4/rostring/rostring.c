@@ -2,48 +2,29 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	k;
-	int	l;
-	int	word;
+	int	i = 0;
+	int	start;
+	int	end;
 
-	i = 0;
-	word = 0;
 	if (argc >= 2)
 	{
-		while (argv[1][i] == '\t' || argv[1][i] == ' ')
+		while (argv[1][i] == ' ' || argv[1][i] == '\t')
 			i++;
-		j = i;
-		while (argv[1][i] != '\t' && argv[1][i] != ' ' && argv[1][i] != '\0')
+		start = i;
+		while (argv[1][i] != '\0' && argv[1][i] != '\t' && argv[1][i] != ' ')
 			i++;
-		i--;
-		k = i;
+		end = i; 
 		while (argv[1][i] != '\0')
-			i++;
-		i--;
-		while (argv[1][i] == ' ' || argv[1][i] == '\t')
-			i--;
-		l = i;
-		i = k;
-		i++;
-		while (argv[1][i] == ' ' || argv[1][i] == '\t')
-			i++;
-		while (i <= l)
 		{
-			if (argv[1][i] == ' ' || argv[1][i] == '\t')
-			{
-				write (1, " ", 1);
-				while (argv[1][i] == ' ' || argv[1][i] == '\t')
-					i++;
-			}
-			word++;
-			write (1, &argv[1][i++], 1);
-		}
-		if (word > 1)
+			while (argv[1][i] == '\t' || argv[1][i] == ' ')
+				i++;
+			if (argv[1][i] == '\0')
+				break;
+			while (argv[1][i] && argv[1][i] != '\t' && argv[1][i] != ' ')
+				write (1, &argv[1][i++], 1);
 			write (1, " ", 1);
-		while (j <= k)
-			write(1, &argv[1][j++], 1);
+		}
+		write (1, argv[1] + start, end - start);
 	}
 	write (1, "\n", 1);
 }

@@ -3,7 +3,7 @@ int     max(int* tab, unsigned int len)
         if (len == 0)
                 return (0);
 
-        unsigned int    i = 1;
+        unsigned int    i;
         int     max;
 
         max = tab[0];

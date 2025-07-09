@@ -1,11 +1,12 @@
 int     max(int* tab, unsigned int len) 
 {
-        unsigned int    i;
+        if (len == 0)
+                return (0);
+
+        unsigned int    i = 1;
         int     max;
 
         max = tab[0];
-        if (len == 0)
-                return (0);
         i = 1;
         while (len > i)
         {

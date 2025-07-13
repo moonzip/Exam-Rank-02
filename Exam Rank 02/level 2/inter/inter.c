@@ -2,30 +2,27 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	j;
-	int	k;
+	int i;
+	int j;
+	int	a[255] = {0};
 
-	i = 0;
 	if (argc == 3)
 	{
-		while (argv[1][i] != '\0')
+		i = 0;
+		while (argv[1][i])
 		{
 			j = 0;
-			while (argv[2][j] != '\0')
+			while (argv[2][j])
 			{
 				if (argv[1][i] == argv[2][j])
 				{
-					k = 0;
-					while (k < i)
+					if (a[argv[1][i]] == 0)
 					{
-						if (argv[1][k] == argv[1][i])
-							break;
-						k++;
-					}
-					if (k == i)
+						a[argv[1][i]] = 1;
 						write (1, &argv[1][i], 1);
-					break;
+					}
+					if (argv[1][i] == '\0')
+						break;
 				}
 				j++;
 			}
@@ -34,3 +31,4 @@ int	main(int argc, char **argv)
 	}
 	write (1, "\n", 1);
 }
+

@@ -2,24 +2,25 @@
 
 int	main(int argc, char **argv)
 {
-	int	i;
-	int	spc;
+	int	i = 0;
+	int	space = 0;
 
-	spc = 0;
 	if (argc == 2)
 	{
-		i = 0;
 		while (argv[1][i] == ' ' || argv[1][i] == '\t')
 			i++;
 		while (argv[1][i] != '\0')
 		{
 			if (argv[1][i] == ' ' || argv[1][i] == '\t')
-				spc = 1;
+			{	
+				space = 1;
+				i++;
+			}
 			else
-			{
-				if (spc != '\0')
+			{	
+				if (space != '\0')
 					write (1, "   ", 3);
-				spc = 0;
+				space = 0;
 				write (1, &argv[1][i++], 1);
 			}
 		}

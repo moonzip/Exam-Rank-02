@@ -10,6 +10,8 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		num = atoi(argv[1]);
+		if (num == 1)
+			printf("1");
 		while (num >= i)
 		{
 			if (num % i == 0)
